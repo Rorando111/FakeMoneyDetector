@@ -1,0 +1,15 @@
+body {
+    background: linear-gradient(to bottom right, #f8f9fa, #e3f2fd);
+}
+
+h1 {
+    color: #007bff;
+}
+
+.card {
+    border-radius: 20px;
+}
+
+button {
+    border-radius: 30px;
+}

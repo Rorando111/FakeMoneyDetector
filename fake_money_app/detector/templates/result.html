@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1d1f21, #2c3e50);
+            color: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #00ffb3;
+        }
+        .card {
+            background-color: #333;
+            border-radius: 15px;
+            padding: 30px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #444;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 8px;
+            text-transform: capitalize;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #00ffb3;
+            padding: 10px 20px;
+            color: #000;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            background-color: #00e0a0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>{{ prediction }}</h1>
+        <h3>Detected Labels:</h3>
+        <ul>
+            {% if labels %}
+                {% for label in labels %}
+                    <li>{{ label }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No fake indicators detected ✅</li>
+            {% endif %}
+        </ul>
+
+        <a href="/">🔙 Upload Another</a>
+    </div>
+
+</body>
+</html>
