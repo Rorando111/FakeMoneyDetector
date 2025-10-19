@@ -1,0 +1,27 @@
+# Virtual environment
+venv/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# YOLO runs and models
+runs/
+*.pt
+*.pth
+*.onnx
+
+# Dataset
+dataset/
+data/
+*.zip
+
+# Logs and temporary files
+*.log
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/

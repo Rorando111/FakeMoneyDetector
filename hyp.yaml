@@ -1,0 +1,23 @@
+# hyp.yaml — YOLOv8 augmentation and hyperparameter settings
+
+# Data augmentation
+degrees: 10          # random rotation ±10°
+translate: 0.1       # random translation ±10%
+scale: 0.5           # random zoom 0.5–1.5x
+shear: 2.0           # shear angles (for perspective)
+flipud: 0.2          # vertical flip probability
+fliplr: 0.5          # horizontal flip probability
+hsv_h: 0.015         # hue augmentation (0–1)
+hsv_s: 0.7           # saturation augmentation (0–1)
+hsv_v: 0.4           # brightness augmentation (0–1)
+mosaic: 1.0          # combine 4 images into one (improves generalization)
+mixup: 0.1           # blend 2 images together occasionally
+copy_paste: 0.0      # copy-paste augmentation (for segmentation, keep 0)
+
+# Optimization settings
+lr0: 0.01            # initial learning rate
+lrf: 0.01            # final learning rate factor
+momentum: 0.937      # optimizer momentum
+weight_decay: 0.0005 # L2 regularization
+warmup_epochs: 3.0   # gradual LR warm-up
+patience: 5          # early stop patience (wait 5 epochs for improvement)
