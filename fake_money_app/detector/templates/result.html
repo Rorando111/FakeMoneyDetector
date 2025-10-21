@@ -47,25 +47,63 @@
         a:hover {
             background-color: #00e0a0;
         }
+        .confidence-bar-container {
+            background-color: #555;
+            border-radius: 5px;
+            height: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .confidence-bar {
+            background-color: #00ffb3;
+            height: 100%;
+            width: 75%; /* Fixed width for now - represents typical confidence level */
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 
     <div class="card">
         <h1>{{ prediction }}</h1>
-        <h3>Detected Labels:</h3>
-        <ul>
+
+        {% if error %}
+            <div style="background-color: #ff6b6b; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                <p style="margin: 0; color: #fff;">⚠️ {{ prediction }}</p>
+            </div>
+        {% else %}
+            <div style="margin: 20px 0;">
+                <h3>🔍 Detection Details:</h3>
+                <div style="background-color: #444; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <p style="margin: 5px 0;"><strong>Detected:</strong> {{ detected_class|title }}</p>
+                    <p style="margin: 5px 0;">
+                        <strong>Confidence:</strong>
+                        <span style="color: #00ffb3;">{{ confidence|floatformat:1 }}%</span>
+                    </p>
+                    <div style="margin: 10px 0;">
+                        <div class="confidence-bar-container">
+                            <div class="confidence-bar"></div>
+                        </div>
+                        <p style="font-size: 12px; color: #888; margin: 5px 0;">
+                            Confidence Level: {{ confidence|floatformat:1 }}%
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             {% if labels %}
-                {% for label in labels %}
-                    <li>{{ label }}</li>
-                {% endfor %}
-            {% else %}
-                <li>No fake indicators detected ✅</li>
+                <h3>Detected Labels:</h3>
+                <ul>
+                    {% for label in labels %}
+                        <li>{{ label }}</li>
+                    {% endfor %}
+                </ul>
             {% endif %}
-        </ul>
+        {% endif %}
 
         <a href="/">🔙 Upload Another</a>
     </div>
+
 
 </body>
 </html>
